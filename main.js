@@ -1,7 +1,7 @@
 let limit = 7
 
 const TODO_URL = `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
-
+const ID_URL = 'https://jsonplaceholder.typicode.com/todos/'
 
 /* Tom array där datan ska ligga */
 const todosArray = []
@@ -31,37 +31,56 @@ const printList = () => {
   todosArray.forEach(todos => {
     const listElement = createListElement(todos)
     output.appendChild(listElement)
-    console.log(todos);
   })
 }
 
-/* Skapa listan */
+/* Skapa listans element */
 const createListElement = (todoData) => {
-
+  
   const item = document.createElement('div')
+  // item.id = todoData.id
   item.classList.add('item-container')
 
+  const checkbox = document.createElement('input')
+  checkbox.type = 'checkbox'
+  checkbox.classList.add('task', 'task-checkbox')
+
   const task = document.createElement('p')
+  task.id = todoData.id
+  task.classList.add('task', 'task-title')
   task.innerText = todoData.title
 
   const button = document.createElement('button')
+  button.id = todoData.id
+  button.classList.add('delete-button')
   button.innerText = 'delete'
 
-  button.addEventListener('click', (id) => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-      method: 'DELETE',
-      });
-    button.parentElement.remove()
+  
+
+  button.addEventListener('click', e => {
+    console.log(e.target.id);
+    fetch(ID_URL + e.target.id, {
+      method: 'DELETE'
+    })
+      .then(res => {
+        console.log(res)
+        if (res.ok) {
+          button.parentElement.remove()
+          const todoIndex = todosArray.findIndex(task => task.id == e.target.id)
+          todosArray.splice(todoIndex, 1)
+          console.log(todosArray);
+        }
+      })
   })
 
+  item.appendChild(checkbox)
   item.appendChild(task)
   item.appendChild(button)
 
   return item
 }
 
-
-const submitTask = e => {
+const addTask = e => {
   e.preventDefault()
 
   let inputValue = document.querySelector('input[type="text"]').value
@@ -70,16 +89,14 @@ const submitTask = e => {
     document.querySelector('.error-message').classList.remove('hidden')
   } else {
     const newTask = {
-      userId: 1,
       title: inputValue,
-      id: limit + 1,
       completed: false
     }
   
-    limit++
-    
+    // limit++
+
     console.log(newTask);
-  
+      
     fetch(TODO_URL, {
     method: 'POST',
     body: JSON.stringify(newTask),
@@ -98,8 +115,6 @@ const submitTask = e => {
   form.reset()
 }
 
-console.log(todosArray);
-
-form.addEventListener('submit', submitTask)
+form.addEventListener('submit', addTask)
 
 
