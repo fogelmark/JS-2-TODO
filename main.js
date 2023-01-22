@@ -38,16 +38,15 @@ const printList = () => {
 const createListElement = (todoData) => {
   
   const item = document.createElement('div')
-  // item.id = todoData.id
   item.classList.add('item-container')
 
   const checkbox = document.createElement('input')
   checkbox.type = 'checkbox'
-  checkbox.classList.add('task', 'task-checkbox')
+  checkbox.classList.add('task-checkbox')
 
   const task = document.createElement('p')
   task.id = todoData.id
-  task.classList.add('task', 'task-title')
+  task.classList.add('task-title')
   task.innerText = todoData.title
 
   const button = document.createElement('button')
@@ -55,7 +54,10 @@ const createListElement = (todoData) => {
   button.classList.add('delete-button')
   button.innerText = 'delete'
 
-  
+  if (todoData.completed === true) {
+    task.classList.add('strike')
+    checkbox.setAttribute('checked', true)
+  }
 
   button.addEventListener('click', e => {
     console.log(e.target.id);
@@ -63,12 +65,15 @@ const createListElement = (todoData) => {
       method: 'DELETE'
     })
       .then(res => {
-        console.log(res)
-        if (res.ok) {
+        // console.log(res)
+        if (!task.classList.contains('strike')) {
+          console.log('JUST STICK IT IN THE GLORY HOLE');
+          return
+        } else if (res.ok) {
           button.parentElement.remove()
           const todoIndex = todosArray.findIndex(task => task.id == e.target.id)
           todosArray.splice(todoIndex, 1)
-          console.log(todosArray);
+          // console.log(todosArray);
         }
       })
   })
@@ -115,6 +120,16 @@ const addTask = e => {
   form.reset()
 }
 
+const changeStatus = e => {
+  if (e.target.nodeName === 'DIV') {
+    e.target.querySelector('p').classList.toggle('strike')
+    e.target.querySelector('.task-checkbox').toggleAttribute('checked')
+  }
+}
+
+
+
+output.addEventListener('click', changeStatus)
 form.addEventListener('submit', addTask)
 
 
