@@ -3,11 +3,14 @@ let limit = 7
 const TODO_URL = `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
 const ID_URL = 'https://jsonplaceholder.typicode.com/todos/'
 
+const modal = document.querySelector('.modal')
+const overlay = document.querySelector('.overlay')
+const closeModalBtn = document.querySelector('.button-close')
+
 /* Tom array där datan ska ligga */
 const todosArray = []
 
 const output = document.querySelector('#output')
-
 
 /* Hämta datan från URLen */
 const fetchTodos = async () => {
@@ -65,15 +68,14 @@ const createListElement = (todoData) => {
       method: 'DELETE'
     })
       .then(res => {
-        // console.log(res)
         if (!task.classList.contains('strike')) {
-          console.log('JUST STICK IT IN THE GLORY HOLE');
+          showModal()
           return
         } else if (res.ok) {
           button.parentElement.remove()
           const todoIndex = todosArray.findIndex(task => task.id == e.target.id)
           todosArray.splice(todoIndex, 1)
-          // console.log(todosArray);
+          document.querySelector('.error-message').classList.add('hidden')
         }
       })
   })
@@ -127,8 +129,18 @@ const changeStatus = e => {
   }
 }
 
+const closeModal = function() {
+  modal.classList.add('hidden')
+  overlay.classList.add('hidden')
+}
 
+const showModal = function() {
+  modal.classList.remove('hidden')
+  overlay.classList.remove('hidden')
+}
 
+closeModalBtn.addEventListener("click", closeModal)
+overlay.addEventListener("click", closeModal)
 output.addEventListener('click', changeStatus)
 form.addEventListener('submit', addTask)
 

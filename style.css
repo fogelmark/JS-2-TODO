@@ -1,7 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  gap: 0.4rem;
+  width: 530px;
+  padding: 1.3rem;
+  min-height: 100px;
+  top: 40%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+.modal .flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal p {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.button-close {
+  transform: translate(40px, -30px);
+  padding: 0.25rem 0.55rem;
+  margin-left: 1rem;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.modal {
+  z-index: 2;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-family: "Ubuntu", sans-serif;
 }
 
 body {
@@ -29,8 +89,8 @@ body {
 
 input[type=text] {
   align-self: center;
-  width: 70%;
-  padding: .2rem;
+  width: 35%;
+  padding: 0.2rem;
   outline: none;
 }
 
@@ -41,15 +101,16 @@ input[type=text] {
   padding: 1rem;
 }
 
-button {
-  padding: .4em 1em;
+.add-button,
+.clear-all {
+  padding: 0.4em 1em;
   width: 90px;
 }
 
 .item-container {
   display: flex;
   /* justify-content: space-between; */
-  padding: .5rem;
+  padding: 0.5rem;
   border-bottom: 1px solid;
 }
 
@@ -59,6 +120,8 @@ input[type=checkbox] {
 
 .delete-button {
   margin-left: auto;
+  padding: 0.4em 1em;
+  width: 90px;
 }
 
 .item-container {
@@ -69,6 +132,7 @@ input[type=checkbox] {
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: 0 0.5em;
 }
 
 #output:last-child {
@@ -91,4 +155,4 @@ input[type=checkbox] {
 .task-title,
 .task-checkbox {
   pointer-events: none;
-}
+}/*# sourceMappingURL=style.css.map */

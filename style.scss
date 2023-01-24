@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import "modal";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background-color: #ccc;
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  background-color: #aaa;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 0 1rem;
+}
+
+input[type=text] {
+  align-self: center;
+  width: 35%;
+  padding: .2rem;
+  outline: none;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 1rem;
+}
+
+.add-button,
+.clear-all {
+  padding: .4em 1em;
+  width: 90px;
+}
+
+.item-container {
+  display: flex;
+  /* justify-content: space-between; */
+  padding: .5rem;
+  border-bottom: 1px solid;
+}
+
+input[type=checkbox] {
+  margin-right: 10px;
+}
+
+.delete-button {
+  margin-left: auto;
+  padding: .4em 1em;
+  width: 90px;
+}
+
+.item-container {
+  cursor: pointer;
+}
+
+.item-container p {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 .5em;
+}
+
+#output:last-child {
+  margin-bottom: 5rem;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.task-title,
+.task-checkbox {
+  pointer-events: none;
+}
