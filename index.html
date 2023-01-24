@@ -11,7 +11,15 @@
 
   <div class="wrapper">
     <div class="main-content">
-
+      
+      <section class="modal hidden">
+        <div class="flex">
+          <h2>Cannot delete task until completed.</h2>
+          <button class="button-close">x</button>
+        </div>
+      </section>
+      <div class="overlay hidden"></div>
+      
       <form id="form">
         <input type="text" placeholder="What to do..">
         <div class="controls">
