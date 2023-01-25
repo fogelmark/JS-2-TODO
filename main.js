@@ -6,11 +6,12 @@ const ID_URL = 'https://jsonplaceholder.typicode.com/todos/'
 const modal = document.querySelector('.modal')
 const overlay = document.querySelector('.overlay')
 const closeModalBtn = document.querySelector('.button-close')
+const output = document.querySelector('#output')
+
 
 /* Tom array där datan ska ligga */
 const todosArray = []
 
-const output = document.querySelector('#output')
 
 /* Hämta datan från URLen */
 const fetchTodos = async () => {
@@ -95,10 +96,6 @@ const addTask = e => {
       title: inputValue,
       completed: false
     }
-  
-    // limit++
-
-    // console.log(newTask);
       
     fetch(TODO_URL, {
     method: 'POST',
