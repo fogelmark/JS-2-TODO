@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   position: absolute;
+  right: 455px;
   gap: 0.4rem;
   width: 530px;
   padding: 1.3rem;
@@ -23,15 +24,14 @@
   font-size: 0.9rem;
   color: #777;
   margin: 0.4rem 0 0.2rem;
+  border: 1px solid red;
 }
 
 .button-close {
-  transform: translate(40px, -30px);
+  transform: translate(20px, -30px);
   padding: 0.25rem 0.55rem;
   margin-left: 1rem;
-  background: #fff;
-  border-radius: 50%;
-  border: 1px solid;
+  cursor: pointer;
 }
 
 .overlay {

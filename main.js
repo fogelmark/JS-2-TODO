@@ -28,9 +28,6 @@ fetchTodos()
 
 /* Printa listan i DOM. Exekveras i fetchTodos ^ */
 const printList = () => {
-  output.textContent = ''
-
-
   todosArray.forEach(todos => {
     const listElement = createListElement(todos)
     output.appendChild(listElement)
@@ -52,18 +49,17 @@ const createListElement = (todoData) => {
   task.classList.add('task-title')
   task.innerText = todoData.title
 
-  const button = document.createElement('button')
-  button.id = todoData.id
-  button.classList.add('delete-button')
-  button.innerText = 'delete'
+  const deleteIcon = document.createElement('i')
+  deleteIcon.id = todoData.id
+  deleteIcon.classList.add('fa-regular', 'fa-circle-xmark')
 
   if (todoData.completed === true) {
     task.classList.add('strike')
+    task.classList.add('change-color')
     checkbox.setAttribute('checked', true)
   }
 
-  button.addEventListener('click', e => {
-    console.log(e.target.id);
+  deleteIcon.addEventListener('click', e => {
     fetch(ID_URL + e.target.id, {
       method: 'DELETE'
     })
@@ -72,7 +68,7 @@ const createListElement = (todoData) => {
           showModal()
           return
         } else if (res.ok) {
-          button.parentElement.remove()
+          deleteIcon.parentElement.remove()
           const todoIndex = todosArray.findIndex(task => task.id == e.target.id)
           todosArray.splice(todoIndex, 1)
           document.querySelector('.error-message').classList.add('hidden')
@@ -82,7 +78,7 @@ const createListElement = (todoData) => {
 
   item.appendChild(checkbox)
   item.appendChild(task)
-  item.appendChild(button)
+  item.appendChild(deleteIcon)
 
   return item
 }
@@ -102,7 +98,7 @@ const addTask = e => {
   
     // limit++
 
-    console.log(newTask);
+    // console.log(newTask);
       
     fetch(TODO_URL, {
     method: 'POST',
@@ -117,6 +113,7 @@ const addTask = e => {
       const listElement = createListElement(data)
       output.appendChild(listElement)
       document.querySelector('.error-message').classList.add('hidden')
+      console.log(todosArray);
     });
   }
   form.reset()
@@ -125,7 +122,9 @@ const addTask = e => {
 const changeStatus = e => {
   if (e.target.nodeName === 'DIV') {
     e.target.querySelector('p').classList.toggle('strike')
+    e.target.querySelector('p').classList.toggle('change-color')
     e.target.querySelector('.task-checkbox').toggleAttribute('checked')
+
   }
 }
 
