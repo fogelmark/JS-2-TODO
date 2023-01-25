@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   position: absolute;
+  right: 455px;
   gap: 0.4rem;
   width: 530px;
   padding: 1.3rem;
@@ -24,15 +25,14 @@
   font-size: 0.9rem;
   color: #777;
   margin: 0.4rem 0 0.2rem;
+  border: 1px solid red;
 }
 
 .button-close {
-  transform: translate(40px, -30px);
+  transform: translate(20px, -30px);
   padding: 0.25rem 0.55rem;
   margin-left: 1rem;
-  background: #fff;
-  border-radius: 50%;
-  border: 1px solid;
+  cursor: pointer;
 }
 
 .overlay {
@@ -65,7 +65,7 @@
 }
 
 body {
-  background-color: #ccc;
+  background: linear-gradient(#14746F, #78C6A3);
 }
 
 .wrapper {
@@ -76,40 +76,50 @@ body {
 }
 
 .main-content {
-  background-color: #aaa;
+  background-color: #eaeaea;
   border-radius: 1rem;
   padding: 1rem;
+  width: 500px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2745098039);
 }
 
 #form {
   display: flex;
-  flex-direction: column;
-  padding: 1rem 1rem 0 1rem;
+  justify-content: space-between;
+  width: 97%;
+  margin: 0 auto;
+  margin-bottom: 0.7rem;
 }
 
 input[type=text] {
   align-self: center;
-  width: 35%;
-  padding: 0.2rem;
+  width: 100%;
+  padding: 0.5rem;
   outline: none;
+  border: none;
 }
 
 .controls {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 1rem;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
-.add-button,
-.clear-all {
-  padding: 0.4em 1em;
-  width: 90px;
+.add-button {
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: #cfcfcf;
+  padding: 0 1rem;
+  border: none;
+}
+.add-button:hover {
+  background-color: #b1b1b1;
+  color: #fff;
 }
 
 .item-container {
   display: flex;
-  /* justify-content: space-between; */
+  align-items: center;
   padding: 0.5rem;
   border-bottom: 1px solid;
 }
@@ -118,10 +128,8 @@ input[type=checkbox] {
   margin-right: 10px;
 }
 
-.delete-button {
+.fa-regular {
   margin-left: auto;
-  padding: 0.4em 1em;
-  width: 90px;
 }
 
 .item-container {
@@ -149,10 +157,19 @@ input[type=checkbox] {
 }
 
 .strike {
+  transition: 0.4s;
   text-decoration: line-through;
 }
 
 .task-title,
 .task-checkbox {
   pointer-events: none;
+}
+
+.fa-regular:hover {
+  color: #aaa;
+}
+
+.change-color {
+  color: #aaa;
 }/*# sourceMappingURL=style.css.map */

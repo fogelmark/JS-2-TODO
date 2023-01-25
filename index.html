@@ -4,38 +4,38 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/5ffbb1b7d4.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="style.css">
    <title>JS2 - TODO</title>
 </head>
 <body>
+    <div class="wrapper">
 
-  <div class="wrapper">
     <div class="main-content">
       
       <section class="modal hidden">
         <div class="flex">
           <h2>Cannot delete task until completed.</h2>
-          <button class="button-close">x</button>
+          <i class="fa-regular fa-circle-xmark button-close"></i>
         </div>
       </section>
       <div class="overlay hidden"></div>
       
       <form id="form">
         <input type="text" placeholder="What to do..">
-        <div class="controls">
-          <button class="add-button">Add</button>
-          <button class="clear-all">Clear All</button>
-        </div>
+        <button class="add-button">Add</button>
       </form>
 
       <div id="output"></div>
+
       <div class="error-message hidden">
         <p>Add a task, please.</p>
       </div>
+
     </div>
+
   </div>
 
-<!-- <script src="script.js"></script> -->
 <script src="main.js"></script>
 </body>
 </html>
