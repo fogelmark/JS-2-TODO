@@ -27,7 +27,7 @@ const fetchTodos = async () => {
 fetchTodos()
 
 
-/* Printa listan i DOM. Exekveras i fetchTodos ^ */
+/* Printa listan i DOM.*/
 const printList = () => {
   todosArray.forEach(todos => {
     const listElement = createListElement(todos)
@@ -60,6 +60,7 @@ const createListElement = (todoData) => {
     checkbox.setAttribute('checked', true)
   }
 
+  /* Delete task function */
   deleteIcon.addEventListener('click', e => {
     fetch(ID_URL + e.target.id, {
       method: 'DELETE'
@@ -84,6 +85,7 @@ const createListElement = (todoData) => {
   return item
 }
 
+/* Form validation + adda tasks */
 const addTask = e => {
   e.preventDefault()
 
@@ -116,6 +118,7 @@ const addTask = e => {
   form.reset()
 }
 
+/* Check/uncheck tasks */
 const changeStatus = e => {
   if (e.target.nodeName === 'DIV') {
     e.target.querySelector('p').classList.toggle('strike')
